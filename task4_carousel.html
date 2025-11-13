@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        img {
+            position: fixed;
+            width: 20%;
+            height: 400px;
+            align-content: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex justify-content-center" style="margin-top: 20px;height: 400px;">
+    <div class="d-flex p-1">
+        <button id="prevBtn" type="button" class="btn btn-light" onclick="prev()">Prev</button>
+    </div>
+    <div style="width:20%;">
+        <img src="images/enemy1.jpg" alt="enemy1">
+        <img src="images/enemy2.jpg" alt="enemy2">
+        <img src="images/enemy3.jpg" alt="enemy3">
+    </div>
+    <div class="d-flex p-1">
+        <button id="nextBtn" type="button" class="btn btn-light" onclick="next()">Next</button>
+    </div>
+</div>
+
+<script>
+    let images = document.getElementsByTagName("img");
+    let i = 0;
+    images[i].style.display = "block";
+
+    function prev() {
+        images[i].style.display = "none";
+        if(++i >= images.length)  i = 0;
+        images[i].style.display = "block";
+    }
+    function next() {
+        images[i].style.display = "none";
+        if(--i < 0) i = images.length - 1;
+        images[i].style.display = "block";
+    }
+</script>
+
+</body>
+</html>

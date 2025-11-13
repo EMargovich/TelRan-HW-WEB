@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<div id="createLibraryContainer" class="container d-flex flex-column gap-3 border rounded mt-5">
+    <h2 class = "mt-1">Create library</h2>
+    <div class="row d-flex justify-content-start gap-2">
+        <div class="col-2">
+            <label> Number of books
+                <input id="inNumBooks" class="input-group form-control p-1" type="number">
+            </label>
+        </div>
+        <div class="col-2">
+            <label> Min year
+                <input id="minYear" class="input-group form-control p-1" type="number">
+            </label>
+        </div>
+        <div class="col-2">
+            <label> Max year
+                <input id="maxYear" class="input-group form-control p-1" type="number">
+            </label>
+        </div>
+        <div class="col-2 d-flex align-items-end">
+            <button id="createLibraryButton" class="btn btn-primary " style = "width: 150px">Create Library</button>
+        </div>
+    </div>
+
+
+    <h2>Search</h2>
+    <div class="row d-flex flex-row gap-2">
+        <div class="col-2">
+            <label> Search by title
+                <input id="inputSearchByTitle" type="text" class="input-group form-control p-1" placeholder="Title">
+            </label>
+        </div>
+        <div class="col-2 d-flex align-items-end">
+            <button id="searchByTitleButton" class="btn btn-primary" style = "width: 150px">Search by title</button>
+        </div>
+        <div class="col-2">
+            <label> Search by author
+                <input id="inputSearchByAuthor" type="text" class="input-group form-control p-1"
+                       placeholder="Author">
+            </label>
+        </div>
+        <div class="col-2 d-flex align-items-end">
+            <button id="searchByAuthorButton" class="btn btn-primary" style = "width: 150px">Search by author</button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px; height: 250px">
+        <label for="searchResult" style="width: 100%; height: 100%"> Results
+            <textarea id="searchResult" placeholder="...Not results" style="width: 100%; height: 100%">
+                    </textarea>
+        </label>
+    </div>
+</div>
+
+<script type="module">
+    import {faker} from 'https://esm.sh/@faker-js/faker';
+    window.faker = faker;
+</script>
+
+<script src="library_function.js"></script>
+</body>
+</html>
