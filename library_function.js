@@ -99,7 +99,6 @@ createLibraryButton.addEventListener("click", function(){
     const min = Number(minYear.value);
     library.generateRandomBooks2(numBooks.value, min, maxYear.value);
     searchRes.textContent = library.printLibrary(library.books);
-
 });
 
 searchByAuthorButton.addEventListener("click", function(){
@@ -108,7 +107,7 @@ searchByAuthorButton.addEventListener("click", function(){
 
 authorForSearch.addEventListener("keyup", function(event) {
     findByAuthorByEvent()
-})
+});
 
 let findByAuthorByEvent = function (){
     searchRes.textContent = "";

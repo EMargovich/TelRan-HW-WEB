@@ -14,7 +14,6 @@ let result = document.querySelector("#result");
 let text = document.querySelector("#text");
 
 button.addEventListener("click", () => {
-    console.log(isPalindrome(text.value));
     if (isPalindrome(text.value)) { // check the actual result
         result.innerHTML = "Palindrome!";
         result.style.color = "green";
