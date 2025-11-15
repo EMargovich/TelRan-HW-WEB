@@ -26,14 +26,9 @@ function Library() {
 
 Library.prototype.findByAuthorTitle = function(author, title){
     author = author.toLowerCase().trim();
-    console.log(author);
     title = title.toLowerCase().trim();
-    console.log(title);
 
     return this.books.filter(book => {
-        // const res = (author === "" ? true : book.author.toLowerCase().includes(author)) &&
-        // (title === "" ? true : book.title.toLowerCase().includes(title));
-        //console.log(res);
         return (author === "" ? true : book.author.toLowerCase().includes(author)) &&
             (title === "" ? true : book.title.toLowerCase().includes(title));
     } );

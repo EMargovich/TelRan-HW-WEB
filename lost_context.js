@@ -24,6 +24,7 @@ let group = {
     students: ['Kir', 'Masha', 'Oleg'],
     showList: function () {
         const show = function (name){
+            //debugger;
             console.log(`${this.title}: ${name}`)
         }
         this.students.forEach(show)
@@ -107,4 +108,99 @@ let group5 = {
 };
 
 group5.showList();
-//Repair bag four ways
+
+console.log("6: set global parameter")
+
+title = "Carmiel 2025 - 2026";
+
+let group6 = {
+    //title: "Carmiel 2025 - 2026",
+    students: ['Kir', 'Masha', 'Oleg'],
+    showList: function () {
+        const show = function (name){
+            debugger;
+            console.log(`${this.title}: ${name}`)
+        }
+        this.students.forEach(show)
+    }
+};
+
+group6.showList();
+
+title = undefined;
+console.log("7: use apply")
+
+let group7 = {
+    title: "Carmiel 2025 - 2026",
+    students: ['Kir', 'Masha', 'Oleg'],
+    showList: function () {
+        const show = function (name){
+            console.log(`${this.title}: ${name}`)
+        }
+        //this.students.forEach(st => show.apply({title: "Carmiel 2025 - 2026"}, [st]))
+        this.students.forEach(st => show.apply(this, [st]))
+    }
+};
+
+group7.showList();
+
+console.log("8: use call")
+
+let group8 = {
+    title: "Carmiel 2025 - 2026",
+    students: ['Kir', 'Masha', 'Oleg'],
+    showList: function () {
+        const show = function (name){
+            console.log(`${this.title}: ${name}`)
+        }
+        //this.students.forEach(st => show.apply({title: "Carmiel 2025 - 2026"}, [st]));
+        this.students.forEach(st => show.call(this, st));
+    }
+};
+
+group8.showList();
+
+console.log('9: call group.title parameter')
+
+let group9 = {
+    title: "Carmiel 2025 - 2026",
+    students: ['Kir', 'Masha', 'Oleg'],
+    showList: function () {
+        const show = function (name){
+            console.log(`${group.title}: ${name}`)
+        }
+        this.students.forEach(show)
+    }
+};
+
+group9.showList();
+
+console.log('10: use forEach parameters thisArg')
+
+let group10 = {
+    title: "Carmiel 2025 - 2026",
+    students: ['Kir', 'Masha', 'Oleg'],
+    showList: function () {
+        const show = function (name){
+            console.log(`${this.title}: ${name}`)
+        }
+        this.students.forEach(show, this);
+    }
+};
+
+group10.showList();
+
+console.log('11: use bind when describe the function')
+
+let group11 = {
+    title: "Carmiel 2025 - 2026",
+    students: ['Kir', 'Masha', 'Oleg'],
+    showList: function () {
+        const show = function (name){
+            console.log(`${this.title}: ${name}`)
+        }.bind(this);
+        this.students.forEach(show);
+    }
+};
+
+group11.showList();
