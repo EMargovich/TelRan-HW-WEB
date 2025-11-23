@@ -4,7 +4,7 @@ const inputOneDate = document.getElementById('oneDate');
 const inputFirstDate = document.getElementById('twoDate1');
 const inputSecondDate = document.getElementById('twoDate2');
 const inputCount = document.getElementById('count');
-let currentDate = new Date().toISOString().split('T')[0];
+let currentDate = getFormattedDate(new Date());
 
 //Set count borders
 inputCount.min = 1;
@@ -27,14 +27,18 @@ inputSecondDate.min = MIN_DATE;
 //Check first and second dates
 inputFirstDate.addEventListener('change', () => {
     inputSecondDate.min = inputFirstDate.value;
-    if (inputSecondDate.min > inputSecondDate.value)
-        inputSecondDate.value =  inputSecondDate.min;
+    // if (inputSecondDate.min > inputSecondDate.value)
+    //     inputSecondDate.value =  inputSecondDate.min;
     inputFirstDate.style.border = '';
 });
 
+inputSecondDate.addEventListener('change', () => {
+    inputFirstDate.max = inputSecondDate.value;
+})
+
 function displayResult(data, container) {
     const wrap = document.createElement('div');
-    wrap.style.marginBotton = '20px';
+    wrap.style.marginBottom = '20px';
     const h3 = document.createElement('h3');
     wrap.appendChild(h3);
     if (data.media_type === 'image') {
@@ -58,7 +62,7 @@ function displayResult(data, container) {
             const thumb = document.createElement('img');
             thumb.src = data.thumbnail_url;
             thumb.alt = "Video thumbnail";
-            thumb.appendChild(thumb);
+            wrap.appendChild(thumb);
         }
     } else {
         const p = document.createElement('p');
@@ -103,7 +107,8 @@ async function fetchPicture(params = {}) {
             }
         }
     } catch (error) {
-        console.error(error);
+       // console.log("In error block in fetchPicture");
+        return true;
     }
 }
 
@@ -127,3 +132,17 @@ function getRandomPictures() {
     if(count < 1){ count = 1;}
     fetchPicture({count: count});
 }
+
+function getFormattedDate(date) {
+    return date.toISOString().split('T')[0];
+}
+
+async function getLastPicture() {
+    for(let i = 0; i < 5; i++) {
+        let acDate = getFormattedDate(new Date(Date.now()  - (24 * 60 * 60 * 1000) * i+ (24 * 60 * 60 * 1000)*0));
+        let b = await fetchPicture({date: acDate});
+        if (!b) return;
+    }
+}
+
+getLastPicture();
